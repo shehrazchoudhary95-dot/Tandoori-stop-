@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tandoori Stop - Complaint</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: #f5f5f5;
+      color: #222;
+    }
+
+    .header {
+      background: #b30000;
+      color: white;
+      padding: 25px 20px;
+      text-align: center;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+
+    .header p {
+      margin: 8px 0 0;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 25px auto;
+      padding: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 22px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 7px;
+      font-weight: bold;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
+    }
+
+    textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 20px;
+      padding: 14px;
+      border: 0;
+      border-radius: 8px;
+      background: #b30000;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:active {
+      transform: scale(0.98);
+    }
+
+    #message {
+      margin-top: 15px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 20px;
+      color: #777;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="header">
+    <h1>Tandoori Stop</h1>
+    <p>Customer Complaint System</p>
+  </div>
+
+  <div class="container">
+    <div class="card">
+
+      <h2>Submit Your Complaint</h2>
+
+      <form id="complaintForm">
+
+        <label>Your Name</label>
+        <input type="text" id="name" placeholder="Enter your name" required>
+
+        <label>Phone Number</label>
+        <input type="tel" id="phone" placeholder="03XXXXXXXXX" required>
+
+        <label>Complaint Type</label>
+        <select id="type" required>
+          <option value="">Select complaint type</option>
+          <option value="Food Quality">Food Quality</option>
+          <option value="Staff Behaviour">Staff Behaviour</option>
+          <option value="Service">Service</option>
+          <option value="Order Issue">Order Issue</option>
+          <option value="Other">Other</option>
+        </select>
+
+        <label>Complaint Details</label>
+        <textarea id="complaint"
+          placeholder="Write your complaint here..."
+          required></textarea>
+
+        <button type="submit">Submit Complaint</button>
+
+        <div id="message"></div>
+
+      </form>
+
+    </div>
+  </div>
+
+  <div class="footer">
+    Tandoori Stop • Customer Support
+  </div>
+
+<script>
+
+const SUPABASE_URL = "https://egfyrteisucbcvdpfxvi.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_z8aCuK3KKTHTf8hTD5ekSw_jUqMVBhT";
+
+const supabaseClient = supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+
+document
+.getElementById("complaintForm")
+.addEventListener("submit", async function(e) {
+
+  e.preventDefault();
+
+  const message = document.getElementById("message");
+
+  message.style.color = "#333";
+  message.innerText = "Submitting...";
+
+  const name = document.getElementById("name").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const type = document.getElementById("type").value;
+  const complaint = document.getElementById("complaint").value.trim();
+
+  const { error } = await supabaseClient
+    .from("complaints")
+    .insert([
+      {
+        name: name,
+        phone: phone,
+        complaint_type: type,
+        complaint: complaint
+      }
+    ]);
+
+  if (error) {
+
+    console.error(error);
+
+    message.style.color = "red";
+    message.innerText =
+      "Complaint submit nahi hui. Database settings check karein.";
+
+  } else {
+
+    message.style.color = "green";
+    message.innerText =
+      "✅ Complaint successfully submitted!";
+
+    document.getElementById("complaintForm").reset();
+  }
+
+});
+
+</script>
+
+</body>
+</html>
