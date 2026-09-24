@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Tandoori Stop - Complaint System</title>
 
+  <!-- Supabase -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <style>
@@ -81,10 +83,6 @@
       cursor: pointer;
     }
 
-    button:active {
-      transform: scale(0.98);
-    }
-
     #message {
       margin-top: 15px;
       text-align: center;
@@ -131,7 +129,8 @@
         </select>
 
         <label>Complaint Details</label>
-        <textarea id="complaint"
+        <textarea
+          id="complaint"
           placeholder="Write your complaint here..."
           required></textarea>
 
@@ -148,65 +147,70 @@
     Tandoori Stop • Customer Support
   </div>
 
-<script>
+  <script>
+    const SUPABASE_URL =
+      "https://egfyrteisucbcvdpfxvi.supabase.co";
 
-const SUPABASE_URL = "https://egfyrteisucbcvdpfxvi.supabase.co";
+    const SUPABASE_KEY =
+      "sb_publishable_z8aCuK3KKTHTf8hTD5ekSw_jUqMVBhT";
 
-const SUPABASE_KEY =
-"sb_publishable_z8aCuK3KKTHTf8hTD5ekSw_jUqMVBhT";
+    const supabaseClient = supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_KEY
+    );
 
-const supabaseClient = supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY
-);
+    document
+      .getElementById("complaintForm")
+      .addEventListener("submit", async function(e) {
 
-document
-.getElementById("complaintForm")
-.addEventListener("submit", async function(e) {
+        e.preventDefault();
 
-  e.preventDefault();
+        const message =
+          document.getElementById("message");
 
-  const message = document.getElementById("message");
+        message.style.color = "#333";
+        message.innerText = "Submitting...";
 
-  message.style.color = "#333";
-  message.innerText = "Submitting...";
+        const phone =
+          document.getElementById("phone").value.trim();
 
-  const name = document.getElementById("name").value.trim();
-  const phone = document.getElementById("phone").value.trim();
-  const type = document.getElementById("type").value;
-  const complaint = document.getElementById("complaint").value.trim();
+        const category =
+          document.getElementById("type").value;
 
-  const { error } = await supabaseClient
-  .from("complaints")
-  .insert([{
-    phone: phone,
-    category: type,
-    rating: 5,
-    massage: complaint,
-    status: "New"
-  }]);
-      }
-    ]);
+        const massage =
+          document.getElementById("complaint").value.trim();
 
-  if (error) {
+        const { error } = await supabaseClient
+          .from("complaints")
+          .insert([{
+            phone: phone,
+            category: category,
+            rating: 5,
+            massage: massage,
+            status: "New"
+          }]);
 
-    console.error(error);
+        if (error) {
 
-    message.style.color = "red";
-    message.innerText = "Error: " + error.message;
-    alert(error.message);
-  } else {
+          console.error(error);
 
-    message.style.color = "green";
-    message.innerText =
-      "✅ Complaint successfully submitted!";
+          message.style.color = "red";
+          message.innerText =
+            "Error: " + error.message;
 
-    document.getElementById("complaintForm").reset();
-  }
+          return;
+        }
 
-});
+        message.style.color = "green";
 
-</script>
+        message.innerText =
+          "✅ Complaint successfully submitted!";
+
+        document
+          .getElementById("complaintForm")
+          .reset();
+      });
+  </script>
 
 </body>
 </html>
