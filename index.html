@@ -177,13 +177,14 @@ document
   const complaint = document.getElementById("complaint").value.trim();
 
   const { error } = await supabaseClient
-    .from("complaints")
-    .insert([
-      {
-        name: name,
-        phone: phone,
-        complaint_type: type,
-        complaint: complaint
+  .from("complaints")
+  .insert([{
+    phone: phone,
+    category: type,
+    rating: 5,
+    massage: complaint,
+    status: "New"
+  }]);
       }
     ]);
 
