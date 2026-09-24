@@ -192,8 +192,7 @@ document
     console.error(error);
 
     message.style.color = "red";
-    message.innerText =
-      "Complaint submit nahi hui. Database settings check karein.";
+    message.innerText = "Error: " + error.message;
 
   } else {
 
