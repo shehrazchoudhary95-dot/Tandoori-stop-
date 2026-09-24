@@ -5,50 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tandoori Stop - Complaint System</title>
 
-  <script>
-const SUPABASE_URL = "https://egfyrteisucbcvdpfxvi.supabase.co";
-const SUPABASE_KEY = sb_publishable_z8aCuK3KKTHTf8hTD5ekSw_jUqMVBhT
-
-const supabaseClient = supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY
-);
-
-document.getElementById("complaintForm").addEventListener("submit", async function(e) {
-  e.preventDefault();
-
-  const message = document.getElementById("message");
-  message.innerText = "Submitting...";
-
-  const phone = document.getElementById("phone").value.trim();
-  const category = document.getElementById("type").value;
-  const massage = document.getElementById("complaint").value.trim();
-
-  const result = await supabaseClient
-    .from("complaints")
-    .insert({
-      phone: phone,
-      category: category,
-      rating: 5,
-      massage: massage,
-      status: "New"
-    });
-
-  if (result.error) {
-    message.style.color = "red";
-    message.innerText = "Error: " + result.error.message;
-    alert("ERROR: " + result.error.message);
-    return;
-  }
-
-  message.style.color = "green";
-  message.innerText = "✅ Complaint successfully submitted!";
-  alert("Complaint successfully submitted!");
-
-  document.getElementById("complaintForm").reset();
-});
-  </script>
-  
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <style>
     * {
