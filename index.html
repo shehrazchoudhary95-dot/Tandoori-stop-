@@ -1,358 +1,1596 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RAEES Prints | Custom T-Shirts</title>
 
-  <title>RAEES Customized T-Shirts</title>
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
+html{
+  scroll-behavior:smooth;
+}
 
-    body {
-      background: #f8f5f0;
-      color: #171717;
-    }
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#0b0b0b;
+  color:#fff;
+  overflow-x:hidden;
+}
 
-    header {
-      background: #111;
-      color: white;
-      padding: 18px 7%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
+a{
+  color:inherit;
+  text-decoration:none;
+}
 
-    .logo {
-      font-size: 27px;
-      font-weight: 900;
-      letter-spacing: 2px;
-    }
+button,
+input,
+textarea,
+select{
+  font:inherit;
+}
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 20px;
-      font-size: 14px;
-    }
+/* NAVBAR */
 
-    .hero {
-      min-height: 82vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 50px 20px;
-      background:
-        linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.65)),
-        url("https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1600&q=80");
-      background-size: cover;
-      background-position: center;
-      color: white;
-    }
+.navbar{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(11,11,11,.92);
+  backdrop-filter:blur(15px);
+  border-bottom:1px solid #292929;
+}
 
-    .hero-content {
-      max-width: 750px;
-    }
+.nav-inner{
+  max-width:1200px;
+  margin:auto;
+  padding:18px 22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
 
-    .hero h1 {
-      font-size: clamp(42px, 8vw, 82px);
-      font-weight: 900;
-      letter-spacing: 3px;
-      margin-bottom: 15px;
-    }
+.logo-area{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-weight:900;
+  letter-spacing:1px;
+}
 
-    .hero p {
-      font-size: 20px;
-      margin-bottom: 30px;
-      line-height: 1.6;
-    }
+.logo{
+  width:48px;
+  height:48px;
+  border-radius:12px;
+  object-fit:contain;
+  background:#fff;
+  padding:5px;
+}
 
-    .btn {
-      display: inline-block;
-      background: #e85d04;
-      color: white;
-      text-decoration: none;
-      padding: 15px 30px;
-      border-radius: 50px;
-      font-weight: bold;
-      transition: .3s;
-    }
+.logo-placeholder{
+  width:48px;
+  height:48px;
+  border-radius:12px;
+  background:linear-gradient(135deg,#ff6a00,#ff9d00);
+  display:grid;
+  place-items:center;
+  color:#111;
+  font-weight:1000;
+}
 
-    .btn:hover {
-      transform: translateY(-3px);
-      background: #ff6d0a;
-    }
+.brand{
+  font-size:21px;
+}
 
-    section {
-      padding: 70px 7%;
-    }
+.nav-links{
+  display:flex;
+  gap:28px;
+  font-size:14px;
+  color:#ddd;
+}
 
-    .section-title {
-      text-align: center;
-      margin-bottom: 40px;
-    }
+.nav-links a:hover{
+  color:#ff7518;
+}
 
-    .section-title h2 {
-      font-size: 38px;
-      margin-bottom: 10px;
-    }
+.nav-btn{
+  background:#ff6a00;
+  color:#111;
+  padding:12px 18px;
+  border-radius:30px;
+  font-weight:800;
+}
 
-    .section-title p {
-      color: #666;
-    }
+/* HERO */
 
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-      gap: 20px;
-    }
+.hero{
+  min-height:88vh;
+  display:flex;
+  align-items:center;
+  position:relative;
+  overflow:hidden;
+}
 
-    .feature {
-      background: white;
-      padding: 30px;
-      border-radius: 18px;
-      text-align: center;
-      box-shadow: 0 8px 30px rgba(0,0,0,.07);
-    }
+.hero:before{
+  content:"";
+  position:absolute;
+  width:500px;
+  height:500px;
+  border-radius:50%;
+  background:#ff5a00;
+  filter:blur(150px);
+  opacity:.18;
+  right:-120px;
+  top:-100px;
+}
 
-    .feature-icon {
-      font-size: 40px;
-      margin-bottom: 15px;
-    }
+.hero-inner{
+  max-width:1200px;
+  width:100%;
+  margin:auto;
+  padding:80px 22px;
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  align-items:center;
+  gap:50px;
+}
 
-    .feature h3 {
-      margin-bottom: 10px;
-    }
+.badge{
+  display:inline-block;
+  padding:9px 15px;
+  border:1px solid #3a3a3a;
+  border-radius:30px;
+  color:#ff8a3d;
+  font-size:13px;
+  margin-bottom:22px;
+}
 
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 25px;
-    }
+.hero h1{
+  font-size:clamp(48px,7vw,82px);
+  line-height:.95;
+  letter-spacing:-4px;
+  margin-bottom:25px;
+}
 
-    .product {
-      background: white;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 8px 30px rgba(0,0,0,.08);
-      transition: .3s;
-    }
+.hero h1 span{
+  color:#ff6a00;
+}
 
-    .product:hover {
-      transform: translateY(-6px);
-    }
+.hero p{
+  color:#bdbdbd;
+  max-width:560px;
+  font-size:17px;
+  line-height:1.7;
+}
 
-    .product img {
-      width: 100%;
-      height: 280px;
-      object-fit: cover;
-    }
+.hero-buttons{
+  margin-top:32px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+}
 
-    .product-info {
-      padding: 20px;
-    }
+.primary-btn{
+  border:0;
+  background:#ff6a00;
+  color:#111;
+  padding:16px 24px;
+  border-radius:12px;
+  font-weight:900;
+  cursor:pointer;
+}
 
-    .product-info h3 {
-      margin-bottom: 8px;
-    }
+.secondary-btn{
+  border:1px solid #444;
+  background:#171717;
+  color:white;
+  padding:16px 24px;
+  border-radius:12px;
+  font-weight:800;
+  cursor:pointer;
+}
 
-    .price {
-      font-weight: bold;
-      color: #e85d04;
-      margin-bottom: 15px;
-    }
+.primary-btn:hover{
+  transform:translateY(-2px);
+}
 
-    .order-section {
-      background: #111;
-      color: white;
-      text-align: center;
-      border-radius: 25px;
-      margin: 30px 7%;
-      padding: 60px 20px;
-    }
+/* HERO SHIRT */
 
-    .order-section h2 {
-      font-size: 40px;
-      margin-bottom: 15px;
-    }
+.hero-shirt{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
 
-    footer {
-      background: #111;
-      color: #aaa;
-      text-align: center;
-      padding: 30px 20px;
-      margin-top: 50px;
-    }
+.shirt-card{
+  width:min(390px,90vw);
+  height:460px;
+  background:linear-gradient(145deg,#171717,#0d0d0d);
+  border:1px solid #303030;
+  border-radius:30px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 30px 80px rgba(0,0,0,.5);
+}
 
-    footer strong {
-      color: white;
-    }
+.tshirt{
+  position:relative;
+  width:250px;
+  height:280px;
+}
 
-    @media (max-width: 650px) {
-      header {
-        padding: 15px 5%;
-      }
+.tshirt-body{
+  position:absolute;
+  left:48px;
+  top:45px;
+  width:155px;
+  height:205px;
+  background:#fff;
+  border-radius:10px 10px 18px 18px;
+  box-shadow:0 20px 40px rgba(0,0,0,.3);
+}
 
-      nav a {
-        margin-left: 8px;
-        font-size: 12px;
-      }
+.tshirt-body:before{
+  content:"";
+  position:absolute;
+  top:-30px;
+  left:-52px;
+  width:75px;
+  height:110px;
+  background:#fff;
+  transform:rotate(25deg);
+  border-radius:12px;
+}
 
-      .hero {
-        min-height: 75vh;
-      }
+.tshirt-body:after{
+  content:"";
+  position:absolute;
+  top:-30px;
+  right:-52px;
+  width:75px;
+  height:110px;
+  background:#fff;
+  transform:rotate(-25deg);
+  border-radius:12px;
+}
 
-      section {
-        padding: 55px 5%;
-      }
+.shirt-neck{
+  position:absolute;
+  z-index:3;
+  top:43px;
+  left:98px;
+  width:55px;
+  height:28px;
+  background:#0b0b0b;
+  border-radius:0 0 40px 40px;
+}
 
-      .order-section {
-        margin: 20px 5%;
-      }
-    }
-  </style>
+.print-demo{
+  position:absolute;
+  z-index:5;
+  top:115px;
+  left:90px;
+  width:70px;
+  text-align:center;
+  color:#111;
+  font-weight:1000;
+  font-size:14px;
+}
+
+/* SECTIONS */
+
+section{
+  padding:90px 22px;
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:50px;
+}
+
+.section-title small{
+  color:#ff6a00;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:2px;
+}
+
+.section-title h2{
+  font-size:clamp(35px,5vw,58px);
+  margin-top:10px;
+  letter-spacing:-2px;
+}
+
+.section-title p{
+  color:#999;
+  max-width:650px;
+  margin:15px auto 0;
+  line-height:1.6;
+}
+
+/* FEATURES */
+
+.features{
+  background:#111;
+}
+
+.feature-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.feature{
+  padding:30px;
+  border:1px solid #292929;
+  background:#151515;
+  border-radius:20px;
+}
+
+.feature-icon{
+  font-size:32px;
+  margin-bottom:18px;
+}
+
+.feature h3{
+  margin-bottom:10px;
+}
+
+.feature p{
+  color:#999;
+  line-height:1.6;
+}
+
+/* CUSTOMIZER */
+
+.customizer{
+  background:#0b0b0b;
+}
+
+.customizer-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:25px;
+}
+
+.panel{
+  background:#131313;
+  border:1px solid #292929;
+  border-radius:24px;
+  padding:25px;
+}
+
+.panel h3{
+  margin-bottom:20px;
+}
+
+.controls{
+  display:grid;
+  gap:18px;
+}
+
+.field label{
+  display:block;
+  color:#aaa;
+  font-size:13px;
+  margin-bottom:8px;
+}
+
+.field input,
+.field select,
+.field textarea{
+  width:100%;
+  background:#0b0b0b;
+  color:#fff;
+  border:1px solid #353535;
+  border-radius:10px;
+  padding:13px;
+  outline:none;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus{
+  border-color:#ff6a00;
+}
+
+.color-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.color{
+  width:35px;
+  height:35px;
+  border-radius:50%;
+  border:3px solid transparent;
+  cursor:pointer;
+}
+
+.color.active{
+  border-color:#ff6a00;
+  transform:scale(1.08);
+}
+
+.color-black{background:#111}
+.color-white{background:#fff}
+.color-red{background:#c62828}
+.color-blue{background:#1565c0}
+.color-green{background:#258c45}
+.color-yellow{background:#f2c94c}
+
+.preview{
+  min-height:600px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:
+    radial-gradient(circle at center,#272727 0,#131313 48%,#0b0b0b 100%);
+  border-radius:20px;
+  position:relative;
+  overflow:hidden;
+}
+
+.preview .tshirt{
+  transform:scale(1.35);
+}
+
+.design-image{
+  position:absolute;
+  z-index:10;
+  width:80px;
+  max-width:120px;
+  max-height:100px;
+  object-fit:contain;
+  cursor:grab;
+  display:none;
+  user-select:none;
+  touch-action:none;
+}
+
+.custom-text-preview{
+  position:absolute;
+  z-index:11;
+  color:#111;
+  font-size:18px;
+  font-weight:900;
+  text-align:center;
+  width:150px;
+  cursor:grab;
+  user-select:none;
+  touch-action:none;
+}
+
+.range{
+  width:100%;
+}
+
+/* ORDER */
+
+.order{
+  background:#111;
+}
+
+.order-box{
+  max-width:850px;
+  margin:auto;
+  background:#151515;
+  border:1px solid #292929;
+  border-radius:25px;
+  padding:30px;
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+
+.full{
+  grid-column:1/-1;
+}
+
+.submit{
+  width:100%;
+  margin-top:10px;
+  padding:17px;
+  border:0;
+  border-radius:12px;
+  background:#ff6a00;
+  color:#111;
+  font-weight:1000;
+  cursor:pointer;
+}
+
+.success{
+  display:none;
+  text-align:center;
+  padding:25px;
+  margin-top:20px;
+  background:#102515;
+  border:1px solid #285d35;
+  border-radius:15px;
+}
+
+.success h3{
+  color:#64df80;
+  margin-bottom:8px;
+}
+
+/* SOCIAL */
+
+.social{
+  padding-top:50px;
+  padding-bottom:50px;
+}
+
+.social-grid{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+.social a{
+  padding:14px 20px;
+  background:#171717;
+  border:1px solid #292929;
+  border-radius:30px;
+  color:#ddd;
+}
+
+.social a:hover{
+  border-color:#ff6a00;
+  color:#ff6a00;
+}
+
+/* FOOTER */
+
+footer{
+  border-top:1px solid #292929;
+  padding:35px 22px;
+  color:#777;
+  text-align:center;
+}
+
+.footer-brand{
+  color:white;
+  font-size:24px;
+  font-weight:1000;
+  margin-bottom:8px;
+}
+
+.footer-orange{
+  color:#ff6a00;
+}
+
+/* MOBILE */
+
+@media(max-width:850px){
+
+  .nav-links{
+    display:none;
+  }
+
+  .nav-inner{
+    padding:13px 16px;
+  }
+
+  .nav-btn{
+    padding:10px 14px;
+    font-size:13px;
+  }
+
+  .hero-inner{
+    grid-template-columns:1fr;
+    padding-top:60px;
+  }
+
+  .hero{
+    min-height:auto;
+  }
+
+  .hero h1{
+    letter-spacing:-3px;
+  }
+
+  .hero-shirt{
+    margin-top:20px;
+  }
+
+  .feature-grid{
+    grid-template-columns:1fr;
+  }
+
+  .customizer-grid{
+    grid-template-columns:1fr;
+  }
+
+  .form-grid{
+    grid-template-columns:1fr;
+  }
+
+  .full{
+    grid-column:auto;
+  }
+
+  section{
+    padding:70px 16px;
+  }
+}
+
+@media(max-width:480px){
+
+  .brand{
+    font-size:17px;
+  }
+
+  .logo,
+  .logo-placeholder{
+    width:40px;
+    height:40px;
+  }
+
+  .shirt-card{
+    height:400px;
+  }
+
+  .preview{
+    min-height:500px;
+  }
+
+  .preview .tshirt{
+    transform:scale(1.05);
+  }
+
+  .panel,
+  .order-box{
+    padding:18px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-<header>
-  <div class="logo">RAEES</div>
+<!-- NAVBAR -->
 
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#designs">Designs</a>
-    <a href="#order">Order</a>
-  </nav>
+<header class="navbar">
+  <div class="nav-inner">
+
+    <div class="logo-area">
+
+      <!-- Later upload your logo as images/logo.png -->
+      <img
+        src="images/logo.png"
+        class="logo"
+        alt="RAEES Prints Logo"
+        onerror="this.style.display='none';document.getElementById('logoPlaceholder').style.display='grid';"
+      >
+
+      <div id="logoPlaceholder" class="logo-placeholder" style="display:none;">
+        R
+      </div>
+
+      <div class="brand">
+        RAEES <span style="color:#ff6a00;">PRINTS</span>
+      </div>
+
+    </div>
+
+    <nav class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#customizer">Design</a>
+      <a href="#order">Order</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <a class="nav-btn" href="#customizer">
+      Design Yours
+    </a>
+
+  </div>
 </header>
 
 
+<!-- HERO -->
+
 <section class="hero" id="home">
-  <div class="hero-content">
-    <h1>RAEES</h1>
 
-    <p>
-      Your Style. Your Design. Your T-Shirt.
-      <br>
-      Premium Customized T-Shirts made for you.
-    </p>
+  <div class="hero-inner">
 
-    <a href="#order" class="btn">Create Your T-Shirt</a>
+    <div>
+
+      <span class="badge">
+        PREMIUM CUSTOM T-SHIRTS
+      </span>
+
+      <h1>
+        Wear Your<br>
+        <span>Own Story.</span>
+      </h1>
+
+      <p>
+        Create a T-shirt that is completely yours.
+        Upload your design, add your text, choose your colour
+        and place your order directly with RAEES Prints.
+      </p>
+
+      <div class="hero-buttons">
+
+        <a href="#customizer" class="primary-btn">
+          Start Designing →
+        </a>
+
+        <a href="#order" class="secondary-btn">
+          Place Order
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="hero-shirt">
+
+      <div class="shirt-card">
+
+        <div class="tshirt">
+
+          <div class="tshirt-body" id="heroShirt"></div>
+
+          <div class="shirt-neck"></div>
+
+          <div class="print-demo">
+            RAEES<br>
+            PRINTS
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
   </div>
+
 </section>
 
 
-<section>
-  <div class="section-title">
-    <h2>Why RAEES?</h2>
-    <p>We turn your ideas into wearable designs.</p>
+<!-- FEATURES -->
+
+<section class="features">
+
+  <div class="container">
+
+    <div class="section-title">
+      <small>Why RAEES</small>
+      <h2>Made For You.</h2>
+      <p>
+        From your idea to your T-shirt, everything starts with you.
+      </p>
+    </div>
+
+    <div class="feature-grid">
+
+      <div class="feature">
+        <div class="feature-icon">🎨</div>
+        <h3>Your Design</h3>
+        <p>
+          Upload your own photo, artwork or design and make it personal.
+        </p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">👕</div>
+        <h3>Your Style</h3>
+        <p>
+          Choose your T-shirt colour, size and add your own custom text.
+        </p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">📦</div>
+        <h3>Easy Ordering</h3>
+        <p>
+          Enter your details and send your complete order directly to RAEES Prints.
+        </p>
+      </div>
+
+    </div>
+
   </div>
 
-  <div class="features">
-
-    <div class="feature">
-      <div class="feature-icon">👕</div>
-      <h3>Custom Designs</h3>
-      <p>Send us your design and we will print it on your T-shirt.</p>
-    </div>
-
-    <div class="feature">
-      <div class="feature-icon">✨</div>
-      <h3>Premium Quality</h3>
-      <p>Comfortable T-shirts with high-quality printing.</p>
-    </div>
-
-    <div class="feature">
-      <div class="feature-icon">🎨</div>
-      <h3>Your Style</h3>
-      <p>Choose your own design, text, color and style.</p>
-    </div>
-
-    <div class="feature">
-      <div class="feature-icon">🚚</div>
-      <h3>Easy Ordering</h3>
-      <p>Order directly from WhatsApp in just a few steps.</p>
-    </div>
-
-  </div>
 </section>
 
 
-<section id="designs">
+<!-- CUSTOMIZER -->
 
-  <div class="section-title">
-    <h2>Our T-Shirt Styles</h2>
-    <p>Choose your favourite style and customize it.</p>
+<section class="customizer" id="customizer">
+
+  <div class="container">
+
+    <div class="section-title">
+
+      <small>Custom Studio</small>
+
+      <h2>Design Your T-Shirt</h2>
+
+      <p>
+        Choose your colour, upload your design and add your text.
+        Your preview updates instantly.
+      </p>
+
+    </div>
+
+
+    <div class="customizer-grid">
+
+
+      <!-- CONTROLS -->
+
+      <div class="panel">
+
+        <h3>Your Design</h3>
+
+        <div class="controls">
+
+          <div class="field">
+
+            <label>T-Shirt Colour</label>
+
+            <div class="color-row">
+
+              <button class="color color-black active"
+                data-color="#111111"></button>
+
+              <button class="color color-white"
+                data-color="#ffffff"></button>
+
+              <button class="color color-red"
+                data-color="#c62828"></button>
+
+              <button class="color color-blue"
+                data-color="#1565c0"></button>
+
+              <button class="color color-green"
+                data-color="#258c45"></button>
+
+              <button class="color color-yellow"
+                data-color="#f2c94c"></button>
+
+            </div>
+
+          </div>
+
+
+          <div class="field">
+
+            <label>Upload Your Design / Photo</label>
+
+            <input
+              type="file"
+              id="designUpload"
+              accept="image/*"
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label>Custom Text</label>
+
+            <input
+              type="text"
+              id="customText"
+              placeholder="Example: RAEES"
+              maxlength="40"
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label>Text Size</label>
+
+            <input
+              type="range"
+              id="textSize"
+              class="range"
+              min="12"
+              max="36"
+              value="18"
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label>Text Colour</label>
+
+            <select id="textColor">
+
+              <option value="#111111">Black</option>
+              <option value="#ffffff">White</option>
+              <option value="#ff6a00">Orange</option>
+              <option value="#c62828">Red</option>
+
+            </select>
+
+          </div>
+
+
+          <div class="field">
+
+            <label>Design Size</label>
+
+            <input
+              type="range"
+              id="designSize"
+              class="range"
+              min="40"
+              max="140"
+              value="80"
+            >
+
+          </div>
+
+
+          <button
+            class="primary-btn"
+            onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})"
+          >
+            Continue To Order →
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- PREVIEW -->
+
+      <div class="panel">
+
+        <h3>Live Preview</h3>
+
+        <div class="preview" id="previewArea">
+
+          <div class="tshirt">
+
+            <div
+              class="tshirt-body"
+              id="previewShirt"
+            ></div>
+
+            <div class="shirt-neck"></div>
+
+          </div>
+
+          <img
+            id="designPreview"
+            class="design-image"
+            alt="Design Preview"
+          >
+
+          <div
+            id="textPreview"
+            class="custom-text-preview"
+          ></div>
+
+        </div>
+
+        <p style="color:#777;text-align:center;margin-top:12px;font-size:12px;">
+          Tip: You can drag your uploaded design/text on the preview.
+        </p>
+
+      </div>
+
+    </div>
+
   </div>
 
-  <div class="products">
-
-    <div class="product">
-      <img src="https://images.unsplash.com/photo-1503341504253-dff4815485f1?auto=format&fit=crop&w=700&q=80">
-      <div class="product-info">
-        <h3>Classic T-Shirt</h3>
-        <p class="price">Customized Price</p>
-        <a href="#order" class="btn">Customize</a>
-      </div>
-    </div>
-
-    <div class="product">
-      <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=700&q=80">
-      <div class="product-info">
-        <h3>Street Style</h3>
-        <p class="price">Customized Price</p>
-        <a href="#order" class="btn">Customize</a>
-      </div>
-    </div>
-
-    <div class="product">
-      <img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=700&q=80">
-      <div class="product-info">
-        <h3>Premium Style</h3>
-        <p class="price">Customized Price</p>
-        <a href="#order" class="btn">Customize</a>
-      </div>
-    </div>
-
-  </div>
 </section>
 
 
-<div class="order-section" id="order">
+<!-- ORDER -->
 
-  <h2>Ready to Create?</h2>
+<section class="order" id="order">
 
-  <p style="margin-bottom:25px;">
-    Tell us what you want on your T-shirt.
-  </p>
+  <div class="container">
 
-  <a
-    class="btn"
-    href="https://wa.me/923278222667?text=Hello%20RAEES%2C%20I%20want%20to%20order%20a%20customized%20T-shirt."
-    target="_blank">
-    Order on WhatsApp
-  </a>
+    <div class="section-title">
 
-</div>
+      <small>Order Now</small>
 
+      <h2>Let's Make It Yours.</h2>
+
+      <p>
+        Fill in your details and send your custom T-shirt order.
+      </p>
+
+    </div>
+
+
+    <div class="order-box">
+
+      <form id="orderForm">
+
+        <div class="form-grid">
+
+
+          <div class="field">
+
+            <label>Your Name *</label>
+
+            <input
+              id="customerName"
+              required
+              placeholder="Your full name"
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label>WhatsApp / Phone *</label>
+
+            <input
+              id="customerPhone"
+              required
+              placeholder="03XXXXXXXXX"
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label>T-Shirt Size *</label>
+
+            <select id="shirtSize" required>
+
+              <option value="">Select size</option>
+              <option>XS</option>
+              <option>S</option>
+              <option>M</option>
+              <option>L</option>
+              <option>XL</option>
+              <option>XXL</option>
+              <option>3XL</option>
+
+            </select>
+
+          </div>
+
+
+          <div class="field">
+
+            <label>Colour</label>
+
+            <select id="shirtColor">
+
+              <option>Black</option>
+              <option>White</option>
+              <option>Red</option>
+              <option>Blue</option>
+              <option>Green</option>
+              <option>Yellow</option>
+
+            </select>
+
+          </div>
+
+
+          <div class="field">
+
+            <label>Quantity *</label>
+
+            <input
+              id="quantity"
+              type="number"
+              min="1"
+              value="1"
+              required
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label>Custom Text</label>
+
+            <input
+              id="orderText"
+              placeholder="Your text"
+            >
+
+          </div>
+
+
+          <div class="field full">
+
+            <label>Delivery Address *</label>
+
+            <textarea
+              id="address"
+              rows="3"
+              required
+              placeholder="Complete delivery address"
+            ></textarea>
+
+          </div>
+
+
+          <div class="field full">
+
+            <label>Extra Instructions</label>
+
+            <textarea
+              id="notes"
+              rows="3"
+              placeholder="Anything else you want us to know?"
+            ></textarea>
+
+          </div>
+
+
+          <div class="field full">
+
+            <p style="color:#aaa;font-size:13px;line-height:1.6;">
+              💡 Final price will be confirmed by RAEES Prints after checking
+              your design, size and quantity.
+            </p>
+
+          </div>
+
+
+          <div class="full">
+
+            <button
+              type="submit"
+              class="submit"
+            >
+              PLACE MY ORDER →
+            </button>
+
+          </div>
+
+        </div>
+
+      </form>
+
+
+      <div class="success" id="successBox">
+
+        <h3>✓ Order Received Successfully!</h3>
+
+        <p>
+          Your order number is:
+          <strong id="orderNumber"></strong>
+        </p>
+
+        <p style="color:#aaa;margin-top:8px;">
+          RAEES Prints will contact you to confirm your order.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- SOCIAL -->
+
+<section class="social" id="contact">
+
+  <div class="container">
+
+    <div class="section-title">
+
+      <small>Stay Connected</small>
+
+      <h2>RAEES Prints</h2>
+
+      <p>
+        Follow us, message us or contact us for your custom T-shirt.
+      </p>
+
+    </div>
+
+
+    <div class="social-grid">
+
+      <a
+        href="https://wa.me/923278222667"
+        target="_blank"
+      >
+        💬 WhatsApp
+      </a>
+
+      <a
+        href="https://www.instagram.com/raeesprints.official?stkn=MXQyMzVmNmRxeHZ5cQ=="
+        target="_blank"
+      >
+        📸 Instagram
+      </a>
+
+      <a
+        href="https://www.tiktok.com/@raeesprints_official"
+        target="_blank"
+      >
+        🎵 TikTok
+      </a>
+
+      <a
+        href="https://www.facebook.com/profile.php?id=61594984320530&sk=about"
+        target="_blank"
+      >
+        f Facebook
+      </a>
+
+      <a href="mailto:info.raeesprints@gmail.com">
+        ✉ Email
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- FOOTER -->
 
 <footer>
+
+  <div class="footer-brand">
+    RAEES <span class="footer-orange">PRINTS</span>
+  </div>
+
   <p>
-    © 2026 <strong>RAEES Customized T-Shirts</strong>
+    Custom T-Shirts. Your Design. Your Style.
   </p>
 
-  <p style="margin-top:8px;">
-    Your Style. Your Design.
+  <p style="margin-top:15px;font-size:12px;">
+    © 2026 RAEES Prints. All rights reserved.
   </p>
+
 </footer>
+
+
+<script>
+
+/* =========================
+   T-SHIRT COLOUR
+========================= */
+
+const colorButtons =
+  document.querySelectorAll(".color");
+
+const previewShirt =
+  document.getElementById("previewShirt");
+
+const heroShirt =
+  document.getElementById("heroShirt");
+
+let selectedColor = "#111111";
+
+colorButtons.forEach(button => {
+
+  button.addEventListener("click", () => {
+
+    colorButtons.forEach(b =>
+      b.classList.remove("active")
+    );
+
+    button.classList.add("active");
+
+    selectedColor =
+      button.dataset.color;
+
+    previewShirt.style.background =
+      selectedColor;
+
+    heroShirt.style.background =
+      selectedColor;
+
+  });
+
+});
+
+
+/* =========================
+   TEXT PREVIEW
+========================= */
+
+const customText =
+  document.getElementById("customText");
+
+const textPreview =
+  document.getElementById("textPreview");
+
+const textSize =
+  document.getElementById("textSize");
+
+const textColor =
+  document.getElementById("textColor");
+
+customText.addEventListener("input", () => {
+
+  textPreview.textContent =
+    customText.value;
+
+});
+
+textSize.addEventListener("input", () => {
+
+  textPreview.style.fontSize =
+    textSize.value + "px";
+
+});
+
+textColor.addEventListener("change", () => {
+
+  textPreview.style.color =
+    textColor.value;
+
+});
+
+
+/* =========================
+   IMAGE UPLOAD
+========================= */
+
+const designUpload =
+  document.getElementById("designUpload");
+
+const designPreview =
+  document.getElementById("designPreview");
+
+const designSize =
+  document.getElementById("designSize");
+
+designUpload.addEventListener("change", event => {
+
+  const file =
+    event.target.files[0];
+
+  if(!file) return;
+
+  const reader =
+    new FileReader();
+
+  reader.onload = e => {
+
+    designPreview.src =
+      e.target.result;
+
+    designPreview.style.display =
+      "block";
+
+  };
+
+  reader.readAsDataURL(file);
+
+});
+
+
+designSize.addEventListener("input", () => {
+
+  designPreview.style.width =
+    designSize.value + "px";
+
+});
+
+
+/* =========================
+   DRAG FUNCTION
+========================= */
+
+function makeDraggable(element){
+
+  let dragging = false;
+  let offsetX = 0;
+  let offsetY = 0;
+
+  element.addEventListener("pointerdown", e => {
+
+    dragging = true;
+
+    const rect =
+      element.getBoundingClientRect();
+
+    offsetX =
+      e.clientX - rect.left;
+
+    offsetY =
+      e.clientY - rect.top;
+
+    element.setPointerCapture(e.pointerId);
+
+  });
+
+
+  element.addEventListener("pointermove", e => {
+
+    if(!dragging) return;
+
+    const parent =
+      document.getElementById("previewArea")
+      .getBoundingClientRect();
+
+    let x =
+      e.clientX - parent.left - offsetX;
+
+    let y =
+      e.clientY - parent.top - offsetY;
+
+    x =
+      Math.max(0,
+      Math.min(
+        parent.width - element.offsetWidth,
+        x
+      ));
+
+    y =
+      Math.max(0,
+      Math.min(
+        parent.height - element.offsetHeight,
+        y
+      ));
+
+    element.style.left =
+      x + "px";
+
+    element.style.top =
+      y + "px";
+
+  });
+
+
+  element.addEventListener("pointerup", () => {
+
+    dragging = false;
+
+  });
+
+}
+
+
+makeDraggable(designPreview);
+makeDraggable(textPreview);
+
+
+/* =========================
+   ORDER FORM
+========================= */
+
+const orderForm =
+  document.getElementById("orderForm");
+
+const successBox =
+  document.getElementById("successBox");
+
+const orderNumber =
+  document.getElementById("orderNumber");
+
+
+orderForm.addEventListener("submit", event => {
+
+  event.preventDefault();
+
+
+  const order = {
+
+    orderNumber:
+      "RP-" +
+      Date.now().toString().slice(-8),
+
+    name:
+      document.getElementById("customerName").value,
+
+    phone:
+      document.getElementById("customerPhone").value,
+
+    size:
+      document.getElementById("shirtSize").value,
+
+    color:
+      document.getElementById("shirtColor").value,
+
+    quantity:
+      document.getElementById("quantity").value,
+
+    customText:
+      document.getElementById("orderText").value,
+
+    address:
+      document.getElementById("address").value,
+
+    notes:
+      document.getElementById("notes").value,
+
+    createdAt:
+      new Date().toLocaleString(),
+
+    status:
+      "New"
+
+  };
+
+
+  /*
+    DEMO MODE
+
+    Orders are temporarily saved
+    in this browser.
+
+    Later we will replace this
+    section with Supabase.
+  */
+
+  const oldOrders =
+    JSON.parse(
+      localStorage.getItem("raeesOrders") || "[]"
+    );
+
+  oldOrders.push(order);
+
+  localStorage.setItem(
+    "raeesOrders",
+    JSON.stringify(oldOrders)
+  );
+
+
+  orderNumber.textContent =
+    order.orderNumber;
+
+  successBox.style.display =
+    "block";
+
+  orderForm.reset();
+
+  window.scrollTo({
+    top: successBox.offsetTop - 100,
+    behavior:"smooth"
+  });
+
+});
+
+
+/* =========================
+   INITIAL SHIRT COLOUR
+========================= */
+
+previewShirt.style.background =
+  "#111111";
+
+heroShirt.style.background =
+  "#ffffff";
+
+</script>
 
 </body>
 </html>
