@@ -3,7 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RAEES Prints | Custom T-Shirts</title>
+<title>RAEES Prints | Premium Custom T-Shirts</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 *{
@@ -12,44 +16,79 @@
   box-sizing:border-box;
 }
 
+:root{
+  --bg:#070707;
+  --bg-2:#0d0d0d;
+  --card:#111111;
+  --border:rgba(255,255,255,.07);
+  --border-hi:rgba(255,255,255,.14);
+  --text:#f5f5f5;
+  --muted:#8a8a8a;
+  --muted-2:#5a5a5a;
+  --accent:#ff7a00;
+  --accent-2:#ffb347;
+  --accent-glow:rgba(255,122,0,.35);
+}
+
 html{
   scroll-behavior:smooth;
 }
 
 body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:#0b0b0b;
-  color:#fff;
+  font-family:'Inter',system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--text);
   overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  line-height:1.5;
 }
 
-a{
-  color:inherit;
-  text-decoration:none;
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background-image:
+    radial-gradient(circle at 20% 10%, rgba(255,122,0,.06), transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(255,180,71,.04), transparent 45%);
+  pointer-events:none;
+  z-index:0;
 }
 
-button,
-input,
-textarea,
-select{
-  font:inherit;
+a{color:inherit;text-decoration:none;}
+button,input,textarea,select{font:inherit;color:inherit;}
+
+h1,h2,h3,h4{
+  font-family:'Space Grotesk',sans-serif;
+  font-weight:600;
+  letter-spacing:-.02em;
 }
+
+::selection{
+  background:var(--accent);
+  color:#000;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:10px;}
+::-webkit-scrollbar-track{background:#0a0a0a;}
+::-webkit-scrollbar-thumb{background:#222;border-radius:10px;}
+::-webkit-scrollbar-thumb:hover{background:var(--accent);}
 
 /* NAVBAR */
-
 .navbar{
   position:sticky;
   top:0;
   z-index:1000;
-  background:rgba(11,11,11,.92);
-  backdrop-filter:blur(15px);
-  border-bottom:1px solid #292929;
+  background:rgba(7,7,7,.75);
+  backdrop-filter:blur(20px) saturate(180%);
+  -webkit-backdrop-filter:blur(20px) saturate(180%);
+  border-bottom:1px solid var(--border);
 }
 
 .nav-inner{
-  max-width:1200px;
+  max-width:1280px;
   margin:auto;
-  padding:18px 22px;
+  padding:16px 28px;
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -60,13 +99,11 @@ select{
   display:flex;
   align-items:center;
   gap:12px;
-  font-weight:900;
-  letter-spacing:1px;
 }
 
 .logo{
-  width:48px;
-  height:48px;
+  width:44px;
+  height:44px;
   border-radius:12px;
   object-fit:contain;
   background:#fff;
@@ -74,156 +111,266 @@ select{
 }
 
 .logo-placeholder{
-  width:48px;
-  height:48px;
+  width:44px;
+  height:44px;
   border-radius:12px;
-  background:linear-gradient(135deg,#ff6a00,#ff9d00);
+  background:linear-gradient(135deg,var(--accent),var(--accent-2));
   display:grid;
   place-items:center;
-  color:#111;
-  font-weight:1000;
+  color:#000;
+  font-weight:800;
+  font-family:'Space Grotesk',sans-serif;
+  font-size:20px;
+  box-shadow:0 0 25px var(--accent-glow);
 }
 
 .brand{
-  font-size:21px;
+  font-family:'Space Grotesk',sans-serif;
+  font-size:17px;
+  font-weight:700;
+  letter-spacing:.5px;
 }
+
+.brand span{color:var(--accent);}
 
 .nav-links{
   display:flex;
-  gap:28px;
-  font-size:14px;
-  color:#ddd;
+  gap:32px;
+  font-size:13.5px;
+  color:#a8a8a8;
+  font-weight:500;
 }
 
-.nav-links a:hover{
-  color:#ff7518;
+.nav-links a{
+  position:relative;
+  transition:color .25s;
 }
+
+.nav-links a::after{
+  content:"";
+  position:absolute;
+  left:0;bottom:-6px;
+  width:0;height:1px;
+  background:var(--accent);
+  transition:width .3s ease;
+}
+
+.nav-links a:hover{color:#fff;}
+.nav-links a:hover::after{width:100%;}
 
 .nav-btn{
-  background:#ff6a00;
-  color:#111;
-  padding:12px 18px;
-  border-radius:30px;
-  font-weight:800;
+  background:linear-gradient(135deg,var(--accent),var(--accent-2));
+  color:#000;
+  padding:11px 20px;
+  border-radius:100px;
+  font-weight:700;
+  font-size:13px;
+  letter-spacing:.3px;
+  box-shadow:0 0 0 1px rgba(255,255,255,.05), 0 8px 24px -8px var(--accent-glow);
+  transition:transform .25s, box-shadow .3s;
+}
+
+.nav-btn:hover{
+  transform:translateY(-1px);
+  box-shadow:0 0 0 1px rgba(255,255,255,.1), 0 12px 32px -8px var(--accent-glow);
 }
 
 /* HERO */
-
 .hero{
-  min-height:88vh;
+  position:relative;
+  min-height:92vh;
   display:flex;
   align-items:center;
-  position:relative;
   overflow:hidden;
+  z-index:1;
 }
 
-.hero:before{
+.hero::before{
   content:"";
   position:absolute;
-  width:500px;
-  height:500px;
+  width:700px;height:700px;
   border-radius:50%;
-  background:#ff5a00;
-  filter:blur(150px);
-  opacity:.18;
-  right:-120px;
-  top:-100px;
+  background:radial-gradient(circle, var(--accent) 0%, transparent 65%);
+  filter:blur(120px);
+  opacity:.15;
+  right:-180px;
+  top:-160px;
+  pointer-events:none;
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  width:500px;height:500px;
+  border-radius:50%;
+  background:radial-gradient(circle, #ffb347 0%, transparent 65%);
+  filter:blur(140px);
+  opacity:.08;
+  left:-200px;
+  bottom:-200px;
+  pointer-events:none;
 }
 
 .hero-inner{
-  max-width:1200px;
+  max-width:1280px;
   width:100%;
   margin:auto;
-  padding:80px 22px;
+  padding:80px 28px;
   display:grid;
   grid-template-columns:1.05fr .95fr;
   align-items:center;
-  gap:50px;
+  gap:60px;
+  position:relative;
+  z-index:2;
 }
 
 .badge{
-  display:inline-block;
-  padding:9px 15px;
-  border:1px solid #3a3a3a;
-  border-radius:30px;
-  color:#ff8a3d;
-  font-size:13px;
-  margin-bottom:22px;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 16px;
+  border:1px solid var(--border-hi);
+  border-radius:100px;
+  color:var(--accent-2);
+  font-size:11.5px;
+  font-weight:600;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  background:rgba(255,122,0,.05);
+  margin-bottom:28px;
+}
+
+.badge::before{
+  content:"";
+  width:6px;height:6px;
+  border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 12px var(--accent);
+  animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+  0%,100%{opacity:1;}
+  50%{opacity:.4;}
 }
 
 .hero h1{
-  font-size:clamp(48px,7vw,82px);
-  line-height:.95;
-  letter-spacing:-4px;
-  margin-bottom:25px;
+  font-size:clamp(48px,7vw,88px);
+  line-height:.94;
+  letter-spacing:-.045em;
+  margin-bottom:26px;
+  font-weight:600;
 }
 
 .hero h1 span{
-  color:#ff6a00;
+  background:linear-gradient(120deg,var(--accent) 0%,var(--accent-2) 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  font-style:italic;
+  font-weight:500;
 }
 
 .hero p{
-  color:#bdbdbd;
-  max-width:560px;
-  font-size:17px;
+  color:var(--muted);
+  max-width:540px;
+  font-size:16px;
   line-height:1.7;
 }
 
 .hero-buttons{
-  margin-top:32px;
+  margin-top:38px;
   display:flex;
   flex-wrap:wrap;
   gap:14px;
 }
 
 .primary-btn{
+  position:relative;
   border:0;
-  background:#ff6a00;
-  color:#111;
-  padding:16px 24px;
-  border-radius:12px;
-  font-weight:900;
+  background:linear-gradient(135deg,var(--accent),var(--accent-2));
+  color:#000;
+  padding:16px 28px;
+  border-radius:100px;
+  font-weight:700;
+  font-size:14px;
   cursor:pointer;
-}
-
-.secondary-btn{
-  border:1px solid #444;
-  background:#171717;
-  color:white;
-  padding:16px 24px;
-  border-radius:12px;
-  font-weight:800;
-  cursor:pointer;
+  letter-spacing:.2px;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  transition:transform .25s, box-shadow .35s;
+  box-shadow:0 8px 32px -8px var(--accent-glow), 0 0 0 1px rgba(255,255,255,.08) inset;
+  font-family:'Inter',sans-serif;
 }
 
 .primary-btn:hover{
   transform:translateY(-2px);
+  box-shadow:0 16px 40px -8px var(--accent-glow), 0 0 0 1px rgba(255,255,255,.15) inset;
+}
+
+.secondary-btn{
+  border:1px solid var(--border-hi);
+  background:rgba(255,255,255,.03);
+  color:#fff;
+  padding:16px 28px;
+  border-radius:100px;
+  font-weight:600;
+  font-size:14px;
+  cursor:pointer;
+  transition:all .25s;
+  backdrop-filter:blur(10px);
+  display:inline-flex;
+  align-items:center;
+  font-family:'Inter',sans-serif;
+}
+
+.secondary-btn:hover{
+  border-color:rgba(255,255,255,.25);
+  background:rgba(255,255,255,.06);
+  transform:translateY(-2px);
 }
 
 /* HERO SHIRT */
-
 .hero-shirt{
   display:flex;
   justify-content:center;
   align-items:center;
+  position:relative;
 }
 
 .shirt-card{
-  width:min(390px,90vw);
-  height:460px;
-  background:linear-gradient(145deg,#171717,#0d0d0d);
-  border:1px solid #303030;
-  border-radius:30px;
+  width:min(420px,90vw);
+  height:500px;
+  background:
+    radial-gradient(circle at 50% 30%, rgba(255,122,0,.15), transparent 60%),
+    linear-gradient(145deg,#161616,#0a0a0a);
+  border:1px solid var(--border-hi);
+  border-radius:32px;
   display:flex;
   align-items:center;
   justify-content:center;
-  box-shadow:0 30px 80px rgba(0,0,0,.5);
+  box-shadow:
+    0 40px 100px -20px rgba(0,0,0,.8),
+    0 0 0 1px rgba(255,255,255,.03) inset,
+    0 1px 0 rgba(255,255,255,.06) inset;
+  position:relative;
+  overflow:hidden;
+}
+
+.shirt-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at 50% 120%, rgba(255,122,0,.2), transparent 55%);
+  pointer-events:none;
 }
 
 .tshirt{
   position:relative;
   width:250px;
   height:280px;
+  filter:drop-shadow(0 30px 40px rgba(0,0,0,.5));
 }
 
 .tshirt-body{
@@ -233,32 +380,37 @@ select{
   width:155px;
   height:205px;
   background:#fff;
-  border-radius:10px 10px 18px 18px;
-  box-shadow:0 20px 40px rgba(0,0,0,.3);
+  border-radius:8px 8px 16px 16px;
+  box-shadow:
+    inset -8px 0 20px rgba(0,0,0,.08),
+    inset 8px 0 20px rgba(0,0,0,.05);
+  transition:background .35s ease;
 }
 
-.tshirt-body:before{
+.tshirt-body::before{
   content:"";
   position:absolute;
   top:-30px;
   left:-52px;
   width:75px;
   height:110px;
-  background:#fff;
+  background:inherit;
   transform:rotate(25deg);
   border-radius:12px;
+  box-shadow:inset 4px 0 12px rgba(0,0,0,.08);
 }
 
-.tshirt-body:after{
+.tshirt-body::after{
   content:"";
   position:absolute;
   top:-30px;
   right:-52px;
   width:75px;
   height:110px;
-  background:#fff;
+  background:inherit;
   transform:rotate(-25deg);
   border-radius:12px;
+  box-shadow:inset -4px 0 12px rgba(0,0,0,.08);
 }
 
 .shirt-neck{
@@ -268,7 +420,7 @@ select{
   left:98px;
   width:55px;
   height:28px;
-  background:#0b0b0b;
+  background:#0a0a0a;
   border-radius:0 0 40px 40px;
 }
 
@@ -280,149 +432,214 @@ select{
   width:70px;
   text-align:center;
   color:#111;
-  font-weight:1000;
-  font-size:14px;
+  font-weight:800;
+  font-family:'Space Grotesk',sans-serif;
+  font-size:13px;
+  line-height:1.1;
+  letter-spacing:.5px;
 }
 
 /* SECTIONS */
-
 section{
-  padding:90px 22px;
+  padding:110px 28px;
+  position:relative;
+  z-index:1;
 }
 
 .container{
-  max-width:1200px;
+  max-width:1280px;
   margin:auto;
 }
 
 .section-title{
   text-align:center;
-  margin-bottom:50px;
+  margin-bottom:64px;
 }
 
 .section-title small{
-  color:#ff6a00;
-  font-weight:800;
+  color:var(--accent);
+  font-weight:600;
   text-transform:uppercase;
-  letter-spacing:2px;
+  letter-spacing:3px;
+  font-size:11px;
+  display:inline-block;
+  margin-bottom:14px;
 }
 
 .section-title h2{
-  font-size:clamp(35px,5vw,58px);
-  margin-top:10px;
-  letter-spacing:-2px;
+  font-size:clamp(36px,5vw,60px);
+  letter-spacing:-.035em;
+  line-height:1.05;
 }
 
 .section-title p{
-  color:#999;
-  max-width:650px;
-  margin:15px auto 0;
-  line-height:1.6;
+  color:var(--muted);
+  max-width:600px;
+  margin:18px auto 0;
+  line-height:1.7;
+  font-size:15.5px;
 }
 
 /* FEATURES */
-
 .features{
-  background:#111;
+  background:linear-gradient(180deg,#070707 0%,#0d0d0d 50%,#070707 100%);
 }
 
 .feature-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:18px;
+  gap:20px;
 }
 
 .feature{
-  padding:30px;
-  border:1px solid #292929;
-  background:#151515;
-  border-radius:20px;
+  padding:36px 30px;
+  border:1px solid var(--border);
+  background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,.005));
+  border-radius:24px;
+  transition:all .4s cubic-bezier(.2,.8,.2,1);
+  position:relative;
+  overflow:hidden;
 }
 
+.feature::before{
+  content:"";
+  position:absolute;
+  top:0;left:0;right:0;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,122,0,.5),transparent);
+  opacity:0;
+  transition:opacity .4s;
+}
+
+.feature:hover{
+  border-color:var(--border-hi);
+  transform:translateY(-4px);
+  background:linear-gradient(180deg,rgba(255,122,0,.04),rgba(255,255,255,.005));
+}
+
+.feature:hover::before{opacity:1;}
+
 .feature-icon{
-  font-size:32px;
-  margin-bottom:18px;
+  width:52px;height:52px;
+  border-radius:14px;
+  display:grid;
+  place-items:center;
+  font-size:24px;
+  background:linear-gradient(135deg,rgba(255,122,0,.15),rgba(255,180,71,.05));
+  border:1px solid rgba(255,122,0,.2);
+  margin-bottom:22px;
 }
 
 .feature h3{
   margin-bottom:10px;
+  font-size:19px;
 }
 
 .feature p{
-  color:#999;
-  line-height:1.6;
+  color:var(--muted);
+  line-height:1.65;
+  font-size:14.5px;
 }
 
 /* CUSTOMIZER */
-
 .customizer{
-  background:#0b0b0b;
+  background:#070707;
 }
 
 .customizer-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:25px;
+  gap:24px;
 }
 
 .panel{
-  background:#131313;
-  border:1px solid #292929;
-  border-radius:24px;
-  padding:25px;
+  background:linear-gradient(180deg,#101010,#0a0a0a);
+  border:1px solid var(--border);
+  border-radius:28px;
+  padding:30px;
+  position:relative;
+  overflow:hidden;
+}
+
+.panel::before{
+  content:"";
+  position:absolute;
+  top:0;left:10%;right:10%;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,122,0,.4),transparent);
 }
 
 .panel h3{
-  margin-bottom:20px;
+  margin-bottom:24px;
+  font-size:18px;
+  font-weight:600;
 }
 
 .controls{
   display:grid;
-  gap:18px;
+  gap:22px;
 }
 
 .field label{
   display:block;
-  color:#aaa;
-  font-size:13px;
-  margin-bottom:8px;
+  color:#a0a0a0;
+  font-size:12px;
+  margin-bottom:10px;
+  font-weight:500;
+  letter-spacing:.4px;
+  text-transform:uppercase;
 }
 
 .field input,
 .field select,
 .field textarea{
   width:100%;
-  background:#0b0b0b;
+  background:#0a0a0a;
   color:#fff;
-  border:1px solid #353535;
-  border-radius:10px;
-  padding:13px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:14px 16px;
   outline:none;
+  transition:all .25s;
+  font-size:14px;
+  font-family:'Inter',sans-serif;
+}
+
+.field input::placeholder,
+.field textarea::placeholder{
+  color:#444;
 }
 
 .field input:focus,
 .field select:focus,
 .field textarea:focus{
-  border-color:#ff6a00;
+  border-color:var(--accent);
+  box-shadow:0 0 0 3px rgba(255,122,0,.1);
+  background:#0d0d0d;
 }
 
 .color-row{
   display:flex;
   flex-wrap:wrap;
-  gap:10px;
+  gap:12px;
 }
 
 .color{
-  width:35px;
-  height:35px;
+  width:38px;
+  height:38px;
   border-radius:50%;
-  border:3px solid transparent;
+  border:2px solid transparent;
   cursor:pointer;
+  transition:all .25s;
+  position:relative;
+  padding:0;
 }
 
+.color:hover{transform:scale(1.1);}
+
 .color.active{
-  border-color:#ff6a00;
-  transform:scale(1.08);
+  border-color:var(--accent);
+  box-shadow:0 0 0 3px rgba(255,122,0,.15), 0 0 20px -4px var(--accent-glow);
 }
 
 .color-black{background:#111}
@@ -433,19 +650,31 @@ section{
 .color-yellow{background:#f2c94c}
 
 .preview{
-  min-height:600px;
+  min-height:620px;
   display:flex;
   align-items:center;
   justify-content:center;
   background:
-    radial-gradient(circle at center,#272727 0,#131313 48%,#0b0b0b 100%);
+    radial-gradient(circle at 50% 40%, #1c1c1c 0%, #0c0c0c 55%, #070707 100%);
   border-radius:20px;
   position:relative;
   overflow:hidden;
+  border:1px solid var(--border);
+}
+
+.preview::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    repeating-linear-gradient(0deg, transparent 0, transparent 40px, rgba(255,255,255,.015) 40px, rgba(255,255,255,.015) 41px),
+    repeating-linear-gradient(90deg, transparent 0, transparent 40px, rgba(255,255,255,.015) 40px, rgba(255,255,255,.015) 41px);
+  pointer-events:none;
+  mask-image:radial-gradient(circle at center, black 20%, transparent 75%);
 }
 
 .preview .tshirt{
-  transform:scale(1.35);
+  transform:scale(1.4);
 }
 
 .design-image{
@@ -459,82 +688,139 @@ section{
   display:none;
   user-select:none;
   touch-action:none;
+  filter:drop-shadow(0 8px 20px rgba(0,0,0,.4));
 }
+
+.design-image:active{cursor:grabbing;}
 
 .custom-text-preview{
   position:absolute;
   z-index:11;
   color:#111;
   font-size:18px;
-  font-weight:900;
+  font-weight:800;
+  font-family:'Space Grotesk',sans-serif;
   text-align:center;
   width:150px;
   cursor:grab;
   user-select:none;
   touch-action:none;
+  letter-spacing:.5px;
 }
+
+.custom-text-preview:active{cursor:grabbing;}
 
 .range{
   width:100%;
+  -webkit-appearance:none;
+  height:4px;
+  background:#1c1c1c;
+  border-radius:4px;
+  outline:none;
+  padding:0;
+}
+
+.range::-webkit-slider-thumb{
+  -webkit-appearance:none;
+  width:18px;height:18px;
+  background:linear-gradient(135deg,var(--accent),var(--accent-2));
+  border-radius:50%;
+  cursor:pointer;
+  box-shadow:0 0 0 4px rgba(255,122,0,.15);
+  transition:transform .2s;
+}
+
+.range::-webkit-slider-thumb:hover{
+  transform:scale(1.15);
+}
+
+.range::-moz-range-thumb{
+  width:18px;height:18px;
+  background:var(--accent);
+  border-radius:50%;
+  cursor:pointer;
+  border:0;
 }
 
 /* ORDER */
-
 .order{
-  background:#111;
+  background:linear-gradient(180deg,#070707 0%,#0d0d0d 100%);
 }
 
 .order-box{
-  max-width:850px;
+  max-width:900px;
   margin:auto;
-  background:#151515;
-  border:1px solid #292929;
-  border-radius:25px;
-  padding:30px;
+  background:linear-gradient(180deg,#101010,#0a0a0a);
+  border:1px solid var(--border);
+  border-radius:32px;
+  padding:44px;
+  position:relative;
+  overflow:hidden;
+}
+
+.order-box::before{
+  content:"";
+  position:absolute;
+  top:0;left:15%;right:15%;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,122,0,.5),transparent);
 }
 
 .form-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:18px;
+  gap:20px;
 }
 
-.full{
-  grid-column:1/-1;
-}
+.full{grid-column:1/-1;}
 
 .submit{
   width:100%;
   margin-top:10px;
-  padding:17px;
+  padding:18px;
   border:0;
-  border-radius:12px;
-  background:#ff6a00;
-  color:#111;
-  font-weight:1000;
+  border-radius:14px;
+  background:linear-gradient(135deg,var(--accent),var(--accent-2));
+  color:#000;
+  font-weight:800;
   cursor:pointer;
+  font-size:14.5px;
+  letter-spacing:.5px;
+  font-family:'Space Grotesk',sans-serif;
+  transition:transform .25s, box-shadow .35s;
+  box-shadow:0 12px 36px -10px var(--accent-glow);
+}
+
+.submit:hover{
+  transform:translateY(-2px);
+  box-shadow:0 20px 44px -10px var(--accent-glow);
 }
 
 .success{
   display:none;
   text-align:center;
-  padding:25px;
-  margin-top:20px;
-  background:#102515;
-  border:1px solid #285d35;
-  border-radius:15px;
+  padding:30px;
+  margin-top:24px;
+  background:linear-gradient(180deg,rgba(30,80,45,.15),rgba(20,60,35,.05));
+  border:1px solid rgba(100,223,128,.25);
+  border-radius:18px;
+  animation:slideUp .5s ease;
+}
+
+@keyframes slideUp{
+  from{opacity:0;transform:translateY(10px);}
+  to{opacity:1;transform:translateY(0);}
 }
 
 .success h3{
   color:#64df80;
-  margin-bottom:8px;
+  margin-bottom:10px;
+  font-size:18px;
 }
 
 /* SOCIAL */
-
 .social{
-  padding-top:50px;
-  padding-bottom:50px;
+  padding:80px 28px;
 }
 
 .social-grid{
@@ -545,121 +831,113 @@ section{
 }
 
 .social a{
-  padding:14px 20px;
-  background:#171717;
-  border:1px solid #292929;
-  border-radius:30px;
-  color:#ddd;
+  padding:13px 22px;
+  background:rgba(255,255,255,.03);
+  border:1px solid var(--border);
+  border-radius:100px;
+  color:#c8c8c8;
+  font-size:13.5px;
+  font-weight:500;
+  transition:all .3s;
+  backdrop-filter:blur(10px);
 }
 
 .social a:hover{
-  border-color:#ff6a00;
-  color:#ff6a00;
+  border-color:rgba(255,122,0,.4);
+  color:var(--accent);
+  background:rgba(255,122,0,.05);
+  transform:translateY(-2px);
+  box-shadow:0 8px 24px -8px var(--accent-glow);
 }
 
 /* FOOTER */
-
 footer{
-  border-top:1px solid #292929;
-  padding:35px 22px;
-  color:#777;
+  border-top:1px solid var(--border);
+  padding:48px 28px 40px;
+  color:var(--muted-2);
   text-align:center;
+  background:#070707;
 }
 
 .footer-brand{
-  color:white;
-  font-size:24px;
-  font-weight:1000;
-  margin-bottom:8px;
+  color:#fff;
+  font-size:26px;
+  font-weight:700;
+  font-family:'Space Grotesk',sans-serif;
+  letter-spacing:.5px;
+  margin-bottom:10px;
 }
 
 .footer-orange{
-  color:#ff6a00;
+  background:linear-gradient(120deg,var(--accent),var(--accent-2));
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+/* REVEAL ANIM */
+.reveal{
+  opacity:0;
+  transform:translateY(24px);
+  transition:opacity .8s cubic-bezier(.2,.8,.2,1), transform .8s cubic-bezier(.2,.8,.2,1);
+}
+
+.reveal.visible{
+  opacity:1;
+  transform:translateY(0);
 }
 
 /* MOBILE */
-
 @media(max-width:850px){
+  .nav-links{display:none;}
 
-  .nav-links{
-    display:none;
-  }
+  .nav-inner{padding:12px 18px;}
 
-  .nav-inner{
-    padding:13px 16px;
-  }
+  .brand{font-size:15px;}
 
-  .nav-btn{
-    padding:10px 14px;
-    font-size:13px;
-  }
+  .nav-btn{padding:10px 16px;font-size:12.5px;}
 
   .hero-inner{
     grid-template-columns:1fr;
-    padding-top:60px;
+    padding:60px 20px;
+    gap:40px;
   }
 
-  .hero{
-    min-height:auto;
-  }
+  .hero{min-height:auto;}
 
-  .hero h1{
-    letter-spacing:-3px;
-  }
+  .hero h1{letter-spacing:-.04em;}
 
-  .hero-shirt{
-    margin-top:20px;
-  }
+  .hero-shirt{margin-top:20px;}
 
-  .feature-grid{
-    grid-template-columns:1fr;
-  }
+  .feature-grid,
+  .customizer-grid,
+  .form-grid{grid-template-columns:1fr;}
 
-  .customizer-grid{
-    grid-template-columns:1fr;
-  }
+  .full{grid-column:auto;}
 
-  .form-grid{
-    grid-template-columns:1fr;
-  }
+  section{padding:80px 20px;}
 
-  .full{
-    grid-column:auto;
-  }
+  .section-title{margin-bottom:44px;}
 
-  section{
-    padding:70px 16px;
-  }
+  .order-box{padding:28px 22px;}
+
+  .panel{padding:24px 20px;}
+
+  .shirt-card{height:440px;}
+
+  .preview{min-height:520px;}
 }
 
 @media(max-width:480px){
+  .brand{font-size:14px;}
 
-  .brand{
-    font-size:17px;
-  }
+  .logo,.logo-placeholder{width:38px;height:38px;font-size:16px;}
 
-  .logo,
-  .logo-placeholder{
-    width:40px;
-    height:40px;
-  }
+  .shirt-card{height:380px;}
 
-  .shirt-card{
-    height:400px;
-  }
+  .preview{min-height:460px;}
 
-  .preview{
-    min-height:500px;
-  }
-
-  .preview .tshirt{
-    transform:scale(1.05);
-  }
-
-  .panel,
-  .order-box{
-    padding:18px;
-  }
+  .preview .tshirt{transform:scale(1.05);}
 }
 </style>
 </head>
@@ -667,28 +945,17 @@ footer{
 <body>
 
 <!-- NAVBAR -->
-
 <header class="navbar">
   <div class="nav-inner">
-
     <div class="logo-area">
-
-      <!-- Later upload your logo as images/logo.png -->
       <img
         src="images/logo.png"
         class="logo"
         alt="RAEES Prints Logo"
         onerror="this.style.display='none';document.getElementById('logoPlaceholder').style.display='grid';"
       >
-
-      <div id="logoPlaceholder" class="logo-placeholder" style="display:none;">
-        R
-      </div>
-
-      <div class="brand">
-        RAEES <span style="color:#ff6a00;">PRINTS</span>
-      </div>
-
+      <div id="logoPlaceholder" class="logo-placeholder" style="display:none;">R</div>
+      <div class="brand">RAEES <span>PRINTS</span></div>
     </div>
 
     <nav class="nav-links">
@@ -698,25 +965,15 @@ footer{
       <a href="#contact">Contact</a>
     </nav>
 
-    <a class="nav-btn" href="#customizer">
-      Design Yours
-    </a>
-
+    <a class="nav-btn" href="#customizer">Design Yours</a>
   </div>
 </header>
 
-
 <!-- HERO -->
-
 <section class="hero" id="home">
-
   <div class="hero-inner">
-
-    <div>
-
-      <span class="badge">
-        PREMIUM CUSTOM T-SHIRTS
-      </span>
+    <div class="reveal">
+      <span class="badge">Premium Custom T-Shirts</span>
 
       <h1>
         Wear Your<br>
@@ -730,867 +987,29 @@ footer{
       </p>
 
       <div class="hero-buttons">
-
-        <a href="#customizer" class="primary-btn">
-          Start Designing →
-        </a>
-
-        <a href="#order" class="secondary-btn">
-          Place Order
-        </a>
-
+        <a href="#customizer" class="primary-btn">Start Designing →</a>
+        <a href="#order" class="secondary-btn">Place Order</a>
       </div>
-
     </div>
 
-
-    <div class="hero-shirt">
-
+    <div class="hero-shirt reveal">
       <div class="shirt-card">
-
         <div class="tshirt">
-
           <div class="tshirt-body" id="heroShirt"></div>
-
           <div class="shirt-neck"></div>
-
           <div class="print-demo">
-            RAEES<br>
-            PRINTS
+            RAEES<br>PRINTS
           </div>
-
         </div>
-
       </div>
-
     </div>
-
   </div>
-
 </section>
-
 
 <!-- FEATURES -->
-
 <section class="features">
-
   <div class="container">
-
-    <div class="section-title">
+    <div class="section-title reveal">
       <small>Why RAEES</small>
       <h2>Made For You.</h2>
-      <p>
-        From your idea to your T-shirt, everything starts with you.
-      </p>
-    </div>
-
-    <div class="feature-grid">
-
-      <div class="feature">
-        <div class="feature-icon">🎨</div>
-        <h3>Your Design</h3>
-        <p>
-          Upload your own photo, artwork or design and make it personal.
-        </p>
-      </div>
-
-      <div class="feature">
-        <div class="feature-icon">👕</div>
-        <h3>Your Style</h3>
-        <p>
-          Choose your T-shirt colour, size and add your own custom text.
-        </p>
-      </div>
-
-      <div class="feature">
-        <div class="feature-icon">📦</div>
-        <h3>Easy Ordering</h3>
-        <p>
-          Enter your details and send your complete order directly to RAEES Prints.
-        </p>
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- CUSTOMIZER -->
-
-<section class="customizer" id="customizer">
-
-  <div class="container">
-
-    <div class="section-title">
-
-      <small>Custom Studio</small>
-
-      <h2>Design Your T-Shirt</h2>
-
-      <p>
-        Choose your colour, upload your design and add your text.
-        Your preview updates instantly.
-      </p>
-
-    </div>
-
-
-    <div class="customizer-grid">
-
-
-      <!-- CONTROLS -->
-
-      <div class="panel">
-
-        <h3>Your Design</h3>
-
-        <div class="controls">
-
-          <div class="field">
-
-            <label>T-Shirt Colour</label>
-
-            <div class="color-row">
-
-              <button class="color color-black active"
-                data-color="#111111"></button>
-
-              <button class="color color-white"
-                data-color="#ffffff"></button>
-
-              <button class="color color-red"
-                data-color="#c62828"></button>
-
-              <button class="color color-blue"
-                data-color="#1565c0"></button>
-
-              <button class="color color-green"
-                data-color="#258c45"></button>
-
-              <button class="color color-yellow"
-                data-color="#f2c94c"></button>
-
-            </div>
-
-          </div>
-
-
-          <div class="field">
-
-            <label>Upload Your Design / Photo</label>
-
-            <input
-              type="file"
-              id="designUpload"
-              accept="image/*"
-            >
-
-          </div>
-
-
-          <div class="field">
-
-            <label>Custom Text</label>
-
-            <input
-              type="text"
-              id="customText"
-              placeholder="Example: RAEES"
-              maxlength="40"
-            >
-
-          </div>
-
-
-          <div class="field">
-
-            <label>Text Size</label>
-
-            <input
-              type="range"
-              id="textSize"
-              class="range"
-              min="12"
-              max="36"
-              value="18"
-            >
-
-          </div>
-
-
-          <div class="field">
-
-            <label>Text Colour</label>
-
-            <select id="textColor">
-
-              <option value="#111111">Black</option>
-              <option value="#ffffff">White</option>
-              <option value="#ff6a00">Orange</option>
-              <option value="#c62828">Red</option>
-
-            </select>
-
-          </div>
-
-
-          <div class="field">
-
-            <label>Design Size</label>
-
-            <input
-              type="range"
-              id="designSize"
-              class="range"
-              min="40"
-              max="140"
-              value="80"
-            >
-
-          </div>
-
-
-          <button
-            class="primary-btn"
-            onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})"
-          >
-            Continue To Order →
-          </button>
-
-        </div>
-
-      </div>
-
-
-      <!-- PREVIEW -->
-
-      <div class="panel">
-
-        <h3>Live Preview</h3>
-
-        <div class="preview" id="previewArea">
-
-          <div class="tshirt">
-
-            <div
-              class="tshirt-body"
-              id="previewShirt"
-            ></div>
-
-            <div class="shirt-neck"></div>
-
-          </div>
-
-          <img
-            id="designPreview"
-            class="design-image"
-            alt="Design Preview"
-          >
-
-          <div
-            id="textPreview"
-            class="custom-text-preview"
-          ></div>
-
-        </div>
-
-        <p style="color:#777;text-align:center;margin-top:12px;font-size:12px;">
-          Tip: You can drag your uploaded design/text on the preview.
-        </p>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- ORDER -->
-
-<section class="order" id="order">
-
-  <div class="container">
-
-    <div class="section-title">
-
-      <small>Order Now</small>
-
-      <h2>Let's Make It Yours.</h2>
-
-      <p>
-        Fill in your details and send your custom T-shirt order.
-      </p>
-
-    </div>
-
-
-    <div class="order-box">
-
-      <form id="orderForm">
-
-        <div class="form-grid">
-
-
-          <div class="field">
-
-            <label>Your Name *</label>
-
-            <input
-              id="customerName"
-              required
-              placeholder="Your full name"
-            >
-
-          </div>
-
-
-          <div class="field">
-
-            <label>WhatsApp / Phone *</label>
-
-            <input
-              id="customerPhone"
-              required
-              placeholder="03XXXXXXXXX"
-            >
-
-          </div>
-
-
-          <div class="field">
-
-            <label>T-Shirt Size *</label>
-
-            <select id="shirtSize" required>
-
-              <option value="">Select size</option>
-              <option>XS</option>
-              <option>S</option>
-              <option>M</option>
-              <option>L</option>
-              <option>XL</option>
-              <option>XXL</option>
-              <option>3XL</option>
-
-            </select>
-
-          </div>
-
-
-          <div class="field">
-
-            <label>Colour</label>
-
-            <select id="shirtColor">
-
-              <option>Black</option>
-              <option>White</option>
-              <option>Red</option>
-              <option>Blue</option>
-              <option>Green</option>
-              <option>Yellow</option>
-
-            </select>
-
-          </div>
-
-
-          <div class="field">
-
-            <label>Quantity *</label>
-
-            <input
-              id="quantity"
-              type="number"
-              min="1"
-              value="1"
-              required
-            >
-
-          </div>
-
-
-          <div class="field">
-
-            <label>Custom Text</label>
-
-            <input
-              id="orderText"
-              placeholder="Your text"
-            >
-
-          </div>
-
-
-          <div class="field full">
-
-            <label>Delivery Address *</label>
-
-            <textarea
-              id="address"
-              rows="3"
-              required
-              placeholder="Complete delivery address"
-            ></textarea>
-
-          </div>
-
-
-          <div class="field full">
-
-            <label>Extra Instructions</label>
-
-            <textarea
-              id="notes"
-              rows="3"
-              placeholder="Anything else you want us to know?"
-            ></textarea>
-
-          </div>
-
-
-          <div class="field full">
-
-            <p style="color:#aaa;font-size:13px;line-height:1.6;">
-              💡 Final price will be confirmed by RAEES Prints after checking
-              your design, size and quantity.
-            </p>
-
-          </div>
-
-
-          <div class="full">
-
-            <button
-              type="submit"
-              class="submit"
-            >
-              PLACE MY ORDER →
-            </button>
-
-          </div>
-
-        </div>
-
-      </form>
-
-
-      <div class="success" id="successBox">
-
-        <h3>✓ Order Received Successfully!</h3>
-
-        <p>
-          Your order number is:
-          <strong id="orderNumber"></strong>
-        </p>
-
-        <p style="color:#aaa;margin-top:8px;">
-          RAEES Prints will contact you to confirm your order.
-        </p>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- SOCIAL -->
-
-<section class="social" id="contact">
-
-  <div class="container">
-
-    <div class="section-title">
-
-      <small>Stay Connected</small>
-
-      <h2>RAEES Prints</h2>
-
-      <p>
-        Follow us, message us or contact us for your custom T-shirt.
-      </p>
-
-    </div>
-
-
-    <div class="social-grid">
-
-      <a
-        href="https://wa.me/923278222667"
-        target="_blank"
-      >
-        💬 WhatsApp
-      </a>
-
-      <a
-        href="https://www.instagram.com/raeesprints.official?stkn=MXQyMzVmNmRxeHZ5cQ=="
-        target="_blank"
-      >
-        📸 Instagram
-      </a>
-
-      <a
-        href="https://www.tiktok.com/@raeesprints_official"
-        target="_blank"
-      >
-        🎵 TikTok
-      </a>
-
-      <a
-        href="https://www.facebook.com/profile.php?id=61594984320530&sk=about"
-        target="_blank"
-      >
-        f Facebook
-      </a>
-
-      <a href="mailto:info.raeesprints@gmail.com">
-        ✉ Email
-      </a>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- FOOTER -->
-
-<footer>
-
-  <div class="footer-brand">
-    RAEES <span class="footer-orange">PRINTS</span>
-  </div>
-
-  <p>
-    Custom T-Shirts. Your Design. Your Style.
-  </p>
-
-  <p style="margin-top:15px;font-size:12px;">
-    © 2026 RAEES Prints. All rights reserved.
-  </p>
-
-</footer>
-
-
-<script>
-
-/* =========================
-   T-SHIRT COLOUR
-========================= */
-
-const colorButtons =
-  document.querySelectorAll(".color");
-
-const previewShirt =
-  document.getElementById("previewShirt");
-
-const heroShirt =
-  document.getElementById("heroShirt");
-
-let selectedColor = "#111111";
-
-colorButtons.forEach(button => {
-
-  button.addEventListener("click", () => {
-
-    colorButtons.forEach(b =>
-      b.classList.remove("active")
-    );
-
-    button.classList.add("active");
-
-    selectedColor =
-      button.dataset.color;
-
-    previewShirt.style.background =
-      selectedColor;
-
-    heroShirt.style.background =
-      selectedColor;
-
-  });
-
-});
-
-
-/* =========================
-   TEXT PREVIEW
-========================= */
-
-const customText =
-  document.getElementById("customText");
-
-const textPreview =
-  document.getElementById("textPreview");
-
-const textSize =
-  document.getElementById("textSize");
-
-const textColor =
-  document.getElementById("textColor");
-
-customText.addEventListener("input", () => {
-
-  textPreview.textContent =
-    customText.value;
-
-});
-
-textSize.addEventListener("input", () => {
-
-  textPreview.style.fontSize =
-    textSize.value + "px";
-
-});
-
-textColor.addEventListener("change", () => {
-
-  textPreview.style.color =
-    textColor.value;
-
-});
-
-
-/* =========================
-   IMAGE UPLOAD
-========================= */
-
-const designUpload =
-  document.getElementById("designUpload");
-
-const designPreview =
-  document.getElementById("designPreview");
-
-const designSize =
-  document.getElementById("designSize");
-
-designUpload.addEventListener("change", event => {
-
-  const file =
-    event.target.files[0];
-
-  if(!file) return;
-
-  const reader =
-    new FileReader();
-
-  reader.onload = e => {
-
-    designPreview.src =
-      e.target.result;
-
-    designPreview.style.display =
-      "block";
-
-  };
-
-  reader.readAsDataURL(file);
-
-});
-
-
-designSize.addEventListener("input", () => {
-
-  designPreview.style.width =
-    designSize.value + "px";
-
-});
-
-
-/* =========================
-   DRAG FUNCTION
-========================= */
-
-function makeDraggable(element){
-
-  let dragging = false;
-  let offsetX = 0;
-  let offsetY = 0;
-
-  element.addEventListener("pointerdown", e => {
-
-    dragging = true;
-
-    const rect =
-      element.getBoundingClientRect();
-
-    offsetX =
-      e.clientX - rect.left;
-
-    offsetY =
-      e.clientY - rect.top;
-
-    element.setPointerCapture(e.pointerId);
-
-  });
-
-
-  element.addEventListener("pointermove", e => {
-
-    if(!dragging) return;
-
-    const parent =
-      document.getElementById("previewArea")
-      .getBoundingClientRect();
-
-    let x =
-      e.clientX - parent.left - offsetX;
-
-    let y =
-      e.clientY - parent.top - offsetY;
-
-    x =
-      Math.max(0,
-      Math.min(
-        parent.width - element.offsetWidth,
-        x
-      ));
-
-    y =
-      Math.max(0,
-      Math.min(
-        parent.height - element.offsetHeight,
-        y
-      ));
-
-    element.style.left =
-      x + "px";
-
-    element.style.top =
-      y + "px";
-
-  });
-
-
-  element.addEventListener("pointerup", () => {
-
-    dragging = false;
-
-  });
-
-}
-
-
-makeDraggable(designPreview);
-makeDraggable(textPreview);
-
-
-/* =========================
-   ORDER FORM
-========================= */
-
-const orderForm =
-  document.getElementById("orderForm");
-
-const successBox =
-  document.getElementById("successBox");
-
-const orderNumber =
-  document.getElementById("orderNumber");
-
-
-orderForm.addEventListener("submit", event => {
-
-  event.preventDefault();
-
-
-  const order = {
-
-    orderNumber:
-      "RP-" +
-      Date.now().toString().slice(-8),
-
-    name:
-      document.getElementById("customerName").value,
-
-    phone:
-      document.getElementById("customerPhone").value,
-
-    size:
-      document.getElementById("shirtSize").value,
-
-    color:
-      document.getElementById("shirtColor").value,
-
-    quantity:
-      document.getElementById("quantity").value,
-
-    customText:
-      document.getElementById("orderText").value,
-
-    address:
-      document.getElementById("address").value,
-
-    notes:
-      document.getElementById("notes").value,
-
-    createdAt:
-      new Date().toLocaleString(),
-
-    status:
-      "New"
-
-  };
-
-
-  /*
-    DEMO MODE
-
-    Orders are temporarily saved
-    in this browser.
-
-    Later we will replace this
-    section with Supabase.
-  */
-
-  const oldOrders =
-    JSON.parse(
-      localStorage.getItem("raeesOrders") || "[]"
-    );
-
-  oldOrders.push(order);
-
-  localStorage.setItem(
-    "raeesOrders",
-    JSON.stringify(oldOrders)
-  );
-
-
-  orderNumber.textContent =
-    order.orderNumber;
-
-  successBox.style.display =
-    "block";
-
-  orderForm.reset();
-
-  window.scrollTo({
-    top: successBox.offsetTop - 100,
-    behavior:"smooth"
-  });
-
-});
-
-
-/* =========================
-   INITIAL SHIRT COLOUR
-========================= */
-
-previewShirt.style.background =
-  "#111111";
-
-heroShirt.style.background =
-  "#ffffff";
-
-</script>
-
-</body>
-</html>
+      <p>F
